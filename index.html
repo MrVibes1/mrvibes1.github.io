@@ -1,51 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FuturistiX Apps</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: white;
+      background: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 40px 20px;
       text-align: center;
-      padding: 60px 20px;
     }
     h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
+      color: #e60023;
+      font-size: 2.5rem;
     }
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
+    .app-section {
+      margin-top: 60px;
     }
-    .btn {
+    .app-box {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .app-box img {
+      width: 120px;
+      height: 120px;
+      border-radius: 24px;
+    }
+    .app-box h2 {
+      margin-top: 15px;
+      color: #222;
+    }
+    .app-box p {
+      font-size: 1rem;
+      color: #555;
+    }
+    .btn-link {
       display: inline-block;
-      background-color: #ffffff;
-      color: #000;
-      padding: 12px 20px;
+      margin-top: 12px;
+      padding: 10px 20px;
+      background-color: #e60023;
+      color: #fff;
       text-decoration: none;
-      border-radius: 30px;
+      border-radius: 6px;
       font-weight: bold;
-      margin: 10px;
+    }
+    .btn-link:hover {
+      background-color: #c4001d;
     }
     footer {
-      margin-top: 60px;
+      margin-top: 80px;
       font-size: 0.9rem;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
 
-  <h1>🚀 Welcome to FuturistiX</h1>
-  <p>Official home for our mobile apps and digital tools.</p>
+  <h1>Welcome to FuturistiX</h1>
+  <p>Official page for our Android apps like Daily Motivation Quotes.</p>
 
-  <a class="btn" href="/dailymotivation/">📲 Daily Motivation Quotes App</a>
-  <a class="btn" href="https://www.notion.so/Privacy-Policy-214c9b5e2ca080dba01cf7cd1f569e8e" target="_blank">🔐 Privacy Policy</a>
+  <section class="app-section">
+    <div class="app-box">
+      <img src="./DailyMotivation_AppIcon.jpg" alt="Daily Motivation App Icon" />
+      <h2>Daily Motivation</h2>
+      <p>Get inspired every day with beautifully curated motivational quotes. Save favorites, receive daily reminders, and stay positive throughout your journey.</p>
+      <a class="btn-link" href="https://mrvibes1.github.io/dailymotivation/">🔗 Visit Page</a>
+    </div>
+  </section>
 
   <footer>
-    <p>&copy; 2025 FuturistiX. All rights reserved.</p>
+    &copy; 2025 FuturistiX. All rights reserved.
   </footer>
 
 </body>
