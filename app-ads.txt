@@ -15,3 +15,5 @@ facebook.com, 1023533513310884, DIRECT, c3e20eee3f780d68
 ironsrc.com, 230daac55, DIRECT
 
 vungle.com, 68843dbad8cbc400116c3632, DIRECT
+
+mintegral.com, 398797, DIRECT
