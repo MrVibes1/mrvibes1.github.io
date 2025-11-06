@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.futuristixapps.likes",
+      "sha256_cert_fingerprints": [
+        "95:5D:88:9F:B4:E7:1F:4A:9A:9B:6B:00:F8:20:66:A4:16:1B:BA:E7:2A:90:4E:CA:97:06:AB:A4:B5:21:9A:26"
+      ]
+    }
+  }
+]
