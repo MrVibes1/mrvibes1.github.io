@@ -42,11 +42,22 @@
     }
 
     /* ===== Canvas Background ===== */
-    #fx-bg {
+    #fx-bg, #hud-overlay {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
+    }
+
+    #hud-overlay {
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.02),
+        rgba(255,255,255,0.02) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+      z-index: 0;
     }
 
     header, section, footer {
@@ -169,6 +180,18 @@
       box-shadow: 0 0 18px var(--accent-glow);
     }
 
+    /* ===== AI Waveform inside cards ===== */
+    .card canvas.waveform {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      pointer-events: none;
+      opacity: 0.45;
+      z-index: 1;
+    }
+
     footer {
       padding: 50px 20px;
       text-align: center;
@@ -187,6 +210,7 @@
 <body>
 
 <canvas id="fx-bg"></canvas>
+<div id="hud-overlay"></div>
 
 <header>
   <h1>Futuristi<span>X</span> Apps</h1>
@@ -208,6 +232,7 @@
       <h3>Daily Motivation</h3>
       <p>Daily inspirational quotes, reminders, and a calm reading experience.</p>
       <a href="https://mrvibes1.github.io/dailymotivation/" target="_blank">View App</a>
+      <canvas class="waveform"></canvas>
     </div>
 
     <div class="card">
@@ -217,6 +242,7 @@
       <a href="https://play.google.com/store/apps/details?id=com.futuristixapps.likes" target="_blank">
         View on Play Store
       </a>
+      <canvas class="waveform"></canvas>
     </div>
   </div>
 </section>
@@ -235,6 +261,7 @@
       <a href="https://futuristixapps.gumroad.com/l/AI_Retention_and_Engagement" target="_blank">
         Get Playbook
       </a>
+      <canvas class="waveform"></canvas>
     </div>
 
     <div class="card">
@@ -244,6 +271,7 @@
       <a href="https://futuristixapps.gumroad.com/l/AI_Monetization" target="_blank">
         Get Playbook
       </a>
+      <canvas class="waveform"></canvas>
     </div>
   </div>
 </section>
@@ -257,43 +285,29 @@
   /* ===== Canvas FX ===== */
   const canvas = document.getElementById("fx-bg");
   const ctx = canvas.getContext("2d");
-  let w, h, active = false;
-  const pointer = { x: 0, y: 0 };
-  const stars = Array.from({ length: 140 }, () => ({
-    x: Math.random() * innerWidth,
-    y: Math.random() * innerHeight,
-    r: Math.random() * 1.4 + 0.4,
-    v: Math.random() * 0.3 + 0.1
+  let w,h,active=false;
+  const pointer={x:0,y:0};
+  const stars=Array.from({length:140},()=>({
+    x:Math.random()*innerWidth,
+    y:Math.random()*innerHeight,
+    r:Math.random()*1.4 + 0.4,
+    v:Math.random()*0.3 + 0.1
   }));
 
-  function resize() {
-    w = canvas.width = innerWidth;
-    h = canvas.height = innerHeight;
-  }
-  window.addEventListener("resize", resize);
-  resize();
+  function resize(){ w=canvas.width=innerWidth; h=canvas.height=innerHeight; }
+  window.addEventListener("resize",resize); resize();
 
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle="rgba(124,124,255,0.75)";
+    stars.forEach(s=>{ s.y+=s.v; if(s.y>h)s.y=0; ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fill(); });
 
-    ctx.fillStyle = "rgba(124,124,255,0.75)";
-    stars.forEach(s => {
-      s.y += s.v;
-      if (s.y > h) s.y = 0;
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fill();
-    });
-
-    if (active) {
-      ctx.strokeStyle = "rgba(124,124,255,0.35)";
-      for (let i = 0; i < 14; i++) {
+    if(active){
+      ctx.strokeStyle="rgba(124,124,255,0.35)";
+      for(let i=0;i<14;i++){
         ctx.beginPath();
-        ctx.moveTo(pointer.x, pointer.y);
-        ctx.lineTo(
-          pointer.x + Math.cos(i) * 140,
-          pointer.y + Math.sin(i) * 140
-        );
+        ctx.moveTo(pointer.x,pointer.y);
+        ctx.lineTo(pointer.x + Math.cos(i)*140,pointer.y + Math.sin(i)*140);
         ctx.stroke();
       }
     }
@@ -301,34 +315,47 @@
   }
   draw();
 
-  const start = e => {
-    active = true;
-    const p = e.touches ? e.touches[0] : e;
-    pointer.x = p.clientX;
-    pointer.y = p.clientY;
-  };
-  const move = e => {
-    if (!active) return;
-    const p = e.touches ? e.touches[0] : e;
-    pointer.x = p.clientX;
-    pointer.y = p.clientY;
-  };
-  const stop = () => active = false;
+  const start = e=>{ active=true; const p=e.touches?e.touches[0]:e; pointer.x=p.clientX; pointer.y=p.clientY; };
+  const move = e=>{ if(!active)return; const p=e.touches?e.touches[0]:e; pointer.x=p.clientX; pointer.y=p.clientY; };
+  const stop=()=>active=false;
 
-  window.addEventListener("mousedown", start);
-  window.addEventListener("mousemove", move);
-  window.addEventListener("mouseup", stop);
-  window.addEventListener("touchstart", start);
-  window.addEventListener("touchmove", move);
-  window.addEventListener("touchend", stop);
+  window.addEventListener("mousedown",start);
+  window.addEventListener("mousemove",move);
+  window.addEventListener("mouseup",stop);
+  window.addEventListener("touchstart",start);
+  window.addEventListener("touchmove",move);
+  window.addEventListener("touchend",stop);
 
   /* ===== Card Glow Tracking ===== */
-  document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("mousemove", e => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty("--mx", `${e.clientX - r.left}px`);
-      card.style.setProperty("--my", `${e.clientY - r.top}px`);
+  document.querySelectorAll(".card").forEach(card=>{
+    card.addEventListener("mousemove",e=>{
+      const r=card.getBoundingClientRect();
+      card.style.setProperty("--mx",`${e.clientX - r.left}px`);
+      card.style.setProperty("--my",`${e.clientY - r.top}px`);
     });
+  });
+
+  /* ===== AI Waveform inside Cards ===== */
+  const waveCanvases = document.querySelectorAll(".card canvas.waveform");
+  waveCanvases.forEach(c=>{
+    const ctx=c.getContext("2d");
+    c.width = c.offsetWidth; c.height = c.offsetHeight;
+    const h = c.height;
+    const w = c.width;
+    const bars = Array.from({length: w}, ()=>Math.random()*h);
+    function drawWave(){
+      ctx.clearRect(0,0,w,h);
+      ctx.strokeStyle = "rgba(124,124,255,0.6)";
+      ctx.beginPath();
+      ctx.moveTo(0,h/2);
+      for(let i=0;i<w;i++){
+        const y = h/2 + bars[i]*Math.sin(Date.now()/500 + i/10);
+        ctx.lineTo(i,y);
+      }
+      ctx.stroke();
+      requestAnimationFrame(drawWave);
+    }
+    drawWave();
   });
 </script>
 
