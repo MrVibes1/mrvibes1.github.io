@@ -7,7 +7,7 @@
 
   <!-- SEO -->
   <meta name="description" content="FuturistiX Apps builds modern Android apps and digital resources focused on productivity, learning, monetization, and growth." />
-  <meta name="keywords" content="FuturistiX Apps, Android Apps, App Retention, App Monetization, AI Apps" />
+  <meta name="keywords" content="FuturistiX Apps, Android Apps, App Retention, App Monetization, AI Apps, TikTok Likes App" />
   <meta name="author" content="FuturistiX Apps" />
 
   <!-- Open Graph -->
@@ -16,7 +16,7 @@
   <meta property="og:image" content="https://mrvibes1.github.io/DailyMotivation_AppIcon.jpg" />
   <meta property="og:type" content="website" />
 
-  <!-- Font -->
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -25,7 +25,7 @@
       --card: rgba(255,255,255,0.08);
       --border: rgba(255,255,255,0.15);
       --accent: #7c7cff;
-      --accent-glow: rgba(124,124,255,0.4);
+      --accent-glow: rgba(124,124,255,0.45);
       --text: #e6e6eb;
       --muted: #a0a0b5;
     }
@@ -41,8 +41,8 @@
       overflow-x: hidden;
     }
 
-    /* 🔵 Canvas background */
-    canvas#fx-bg {
+    /* ===== Canvas Background ===== */
+    #fx-bg {
       position: fixed;
       inset: 0;
       z-index: 0;
@@ -68,7 +68,7 @@
 
     header span {
       color: var(--accent);
-      text-shadow: 0 0 20px var(--accent-glow);
+      text-shadow: 0 0 25px var(--accent-glow);
     }
 
     header p {
@@ -84,26 +84,57 @@
       margin: auto;
     }
 
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    section p.section-desc {
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 24px;
     }
 
+    /* ===== Glow Reactive Cards ===== */
     .card {
       background: var(--card);
       backdrop-filter: blur(16px);
       border: 1px solid var(--border);
       border-radius: 18px;
       padding: 24px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
       overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        600px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(124,124,255,0.18),
+        transparent 40%
+      );
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .card:hover::before {
+      opacity: 1;
     }
 
     .card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 0 30px rgba(124,124,255,0.15);
+      box-shadow:
+        0 0 30px rgba(124,124,255,0.25),
+        inset 0 0 25px rgba(124,124,255,0.15);
     }
 
     .card img {
@@ -112,7 +143,20 @@
       border-radius: 16px;
     }
 
+    .card h3 {
+      margin-top: 16px;
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
     .card a {
+      position: relative;
+      z-index: 2;
       display: inline-block;
       margin-top: 14px;
       padding: 10px 18px;
@@ -122,7 +166,7 @@
       text-decoration: none;
       font-weight: 600;
       font-size: 0.9rem;
-      box-shadow: 0 0 15px var(--accent-glow);
+      box-shadow: 0 0 18px var(--accent-glow);
     }
 
     footer {
@@ -131,6 +175,11 @@
       color: var(--muted);
       font-size: 0.9rem;
       border-top: 1px solid var(--border);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
     }
   </style>
 </head>
@@ -147,8 +196,57 @@
   </p>
 </header>
 
-<!-- content unchanged -->
-<!-- … your sections remain exactly the same … -->
+<section id="apps">
+  <h2>Apps</h2>
+  <p class="section-desc">
+    Carefully crafted mobile applications designed for simplicity, impact, and real-world results.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <img src="./DailyMotivation_AppIcon.jpg" alt="Daily Motivation App Icon">
+      <h3>Daily Motivation</h3>
+      <p>Daily inspirational quotes, reminders, and a calm reading experience.</p>
+      <a href="https://mrvibes1.github.io/dailymotivation/" target="_blank">View App</a>
+    </div>
+
+    <div class="card">
+      <img src="./likes_icon.png" alt="Likes App Icon">
+      <h3>Likes</h3>
+      <p>Boost TikTok engagement, visibility, and chances of going viral.</p>
+      <a href="https://play.google.com/store/apps/details?id=com.futuristixapps.likes" target="_blank">
+        View on Play Store
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="resources">
+  <h2>Resources</h2>
+  <p class="section-desc">
+    Battle-tested playbooks for building, growing, and monetizing modern apps.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <img src="./retention_playbook.png" alt="Retention Playbook">
+      <h3>AI & Mobile App Retention</h3>
+      <p>Habit loops, AI strategies, and engagement systems that work.</p>
+      <a href="https://futuristixapps.gumroad.com/l/AI_Retention_and_Engagement" target="_blank">
+        Get Playbook
+      </a>
+    </div>
+
+    <div class="card">
+      <img src="./monetization.png" alt="Monetization Playbook">
+      <h3>AI App Monetization</h3>
+      <p>Turn free users into paid customers with psychology and funnels.</p>
+      <a href="https://futuristixapps.gumroad.com/l/AI_Monetization" target="_blank">
+        Get Playbook
+      </a>
+    </div>
+  </div>
+</section>
 
 <footer>
   © 2026 FuturistiX Apps. All rights reserved.<br><br>
@@ -156,88 +254,82 @@
 </footer>
 
 <script>
+  /* ===== Canvas FX ===== */
   const canvas = document.getElementById("fx-bg");
   const ctx = canvas.getContext("2d");
-
-  let w, h, particles = [], active = false, pointer = { x: 0, y: 0 };
+  let w, h, active = false;
+  const pointer = { x: 0, y: 0 };
+  const stars = Array.from({ length: 140 }, () => ({
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight,
+    r: Math.random() * 1.4 + 0.4,
+    v: Math.random() * 0.3 + 0.1
+  }));
 
   function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
+    w = canvas.width = innerWidth;
+    h = canvas.height = innerHeight;
   }
   window.addEventListener("resize", resize);
   resize();
 
-  // ⭐ Star particles
-  for (let i = 0; i < 120; i++) {
-    particles.push({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      r: Math.random() * 1.5 + 0.5,
-      vy: Math.random() * 0.3 + 0.1
-    });
-  }
-
   function draw() {
     ctx.clearRect(0, 0, w, h);
 
-    // floating stars
-    ctx.fillStyle = "rgba(124,124,255,0.7)";
-    particles.forEach(p => {
-      p.y += p.vy;
-      if (p.y > h) p.y = 0;
+    ctx.fillStyle = "rgba(124,124,255,0.75)";
+    stars.forEach(s => {
+      s.y += s.v;
+      if (s.y > h) s.y = 0;
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
       ctx.fill();
     });
 
-    // interaction pulse
     if (active) {
       ctx.strokeStyle = "rgba(124,124,255,0.35)";
-      ctx.lineWidth = 1;
-      for (let i = 0; i < 12; i++) {
+      for (let i = 0; i < 14; i++) {
         ctx.beginPath();
         ctx.moveTo(pointer.x, pointer.y);
         ctx.lineTo(
-          pointer.x + Math.cos(i) * 120,
-          pointer.y + Math.sin(i) * 120
+          pointer.x + Math.cos(i) * 140,
+          pointer.y + Math.sin(i) * 140
         );
         ctx.stroke();
       }
-
-      ctx.beginPath();
-      ctx.arc(pointer.x, pointer.y, 40, 0, Math.PI * 2);
-      ctx.stroke();
     }
-
     requestAnimationFrame(draw);
   }
-
   draw();
 
-  // Input handling
-  const activate = e => {
+  const start = e => {
     active = true;
-    const t = e.touches ? e.touches[0] : e;
-    pointer.x = t.clientX;
-    pointer.y = t.clientY;
+    const p = e.touches ? e.touches[0] : e;
+    pointer.x = p.clientX;
+    pointer.y = p.clientY;
   };
-
   const move = e => {
     if (!active) return;
-    const t = e.touches ? e.touches[0] : e;
-    pointer.x = t.clientX;
-    pointer.y = t.clientY;
+    const p = e.touches ? e.touches[0] : e;
+    pointer.x = p.clientX;
+    pointer.y = p.clientY;
   };
+  const stop = () => active = false;
 
-  const deactivate = () => active = false;
-
-  window.addEventListener("mousedown", activate);
+  window.addEventListener("mousedown", start);
   window.addEventListener("mousemove", move);
-  window.addEventListener("mouseup", deactivate);
-  window.addEventListener("touchstart", activate);
+  window.addEventListener("mouseup", stop);
+  window.addEventListener("touchstart", start);
   window.addEventListener("touchmove", move);
-  window.addEventListener("touchend", deactivate);
+  window.addEventListener("touchend", stop);
+
+  /* ===== Card Glow Tracking ===== */
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("mousemove", e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      card.style.setProperty("--my", `${e.clientY - r.top}px`);
+    });
+  });
 </script>
 
 </body>
