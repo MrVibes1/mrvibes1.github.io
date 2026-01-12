@@ -3,105 +3,218 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FuturistiX Apps</title>
+  <title>FuturistiX — Apps & Digital Resources</title>
 
-  <!-- ✅ SEO Meta Tags -->
-  <meta name="description" content="FuturistiX Apps - Android apps like Daily Motivation Quotes to inspire your day." />
-  <meta name="keywords" content="Daily Motivation, Motivational Quotes App, Android Quotes App, FuturistiX, Productivity Apps, Positive Thinking" />
-  <meta name="author" content="FuturistiX Apps" />
-  <meta name="robots" content="index, follow" />
+  <!-- SEO -->
+  <meta name="description" content="FuturistiX builds modern Android apps and digital resources focused on productivity, learning, and personal growth." />
+  <meta name="keywords" content="FuturistiX Apps, Android Apps, Productivity Apps, Motivation, Learning Apps" />
+  <meta name="author" content="FuturistiX" />
 
-  <!-- ✅ Open Graph / Facebook -->
-  <meta property="og:title" content="FuturistiX - Android Apps" />
-  <meta property="og:description" content="Explore inspiring Android apps like Daily Motivation Quotes. Stay positive and productive." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="FuturistiX — Modern Apps & Resources" />
+  <meta property="og:description" content="Explore futuristic Android apps and digital tools by FuturistiX." />
   <meta property="og:image" content="https://mrvibes1.github.io/DailyMotivation_AppIcon.jpg" />
-  <meta property="og:url" content="https://mrvibes1.github.io/" />
   <meta property="og:type" content="website" />
 
-  <!-- ✅ Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="FuturistiX - Android Apps" />
-  <meta name="twitter:description" content="Explore inspiring Android apps like Daily Motivation Quotes. Stay positive and productive." />
-  <meta name="twitter:image" content="https://mrvibes1.github.io/DailyMotivation_AppIcon.jpg" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg: #0b0f1a;
+      --card: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.15);
+      --accent: #7c7cff;
+      --accent-glow: rgba(124,124,255,0.4);
+      --text: #e6e6eb;
+      --muted: #a0a0b5;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f4f4;
-      color: #333;
       margin: 0;
-      padding: 40px 20px;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #141b34, var(--bg));
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      padding: 80px 20px 60px;
       text-align: center;
     }
-    h1 {
-      color: #e60023;
-      font-size: 2.5rem;
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
     }
-    .app-section {
-      margin-top: 60px;
+
+    header span {
+      color: var(--accent);
+      text-shadow: 0 0 20px var(--accent-glow);
     }
-    .app-box {
-      max-width: 400px;
+
+    header p {
+      max-width: 680px;
       margin: 0 auto;
-      padding: 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      color: var(--muted);
+      font-size: 1.1rem;
     }
-    .app-box img {
-      width: 120px;
-      height: 120px;
-      border-radius: 24px;
+
+    /* Sections */
+    section {
+      padding: 70px 20px;
+      max-width: 1100px;
+      margin: auto;
     }
-    .app-box h2 {
-      margin-top: 15px;
-      color: #222;
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
     }
-    .app-box p {
-      font-size: 1rem;
-      color: #555;
+
+    section p.section-desc {
+      color: var(--muted);
+      margin-bottom: 40px;
     }
-    .btn-link {
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(124,124,255,0.15), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 30px rgba(124,124,255,0.15);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card img {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+    }
+
+    .card h3 {
+      margin-top: 16px;
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .card a {
       display: inline-block;
-      margin-top: 12px;
-      padding: 10px 20px;
-      background-color: #e60023;
+      margin-top: 14px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #9a9aff);
       color: #fff;
       text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-    }
-    .btn-link:hover {
-      background-color: #c4001d;
-    }
-    footer {
-      margin-top: 80px;
+      font-weight: 600;
       font-size: 0.9rem;
-      color: #aaa;
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    /* Footer */
+    footer {
+      padding: 50px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
     }
   </style>
 </head>
+
 <body>
 
-  <h1>Welcome to FuturistiX</h1>
-  <p>Official page for our Android apps. Stay tuned - there's more to come.</p>
+<header>
+  <h1>Futuristi<span>X</span></h1>
+  <p>
+    We build modern Android apps and digital resources focused on productivity,
+    learning, motivation, and personal growth.
+  </p>
+</header>
 
-  <section class="app-section">
-    <div class="app-box">
-      <img src="./DailyMotivation_AppIcon.jpg" alt="Daily Motivation App Icon" />
-      <h2>Daily Motivation</h2>
-      <p>Get inspired every day with beautifully curated motivational quotes. Save favorites, receive daily reminders, and stay positive throughout your journey.</p>
-      <a class="btn-link" href="https://mrvibes1.github.io/dailymotivation/">🔗 Visit Page</a>
+<section id="apps">
+  <h2>Apps</h2>
+  <p class="section-desc">
+    Carefully crafted mobile applications designed for simplicity, impact, and daily use.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <img src="./DailyMotivation_AppIcon.jpg" alt="Daily Motivation App Icon">
+      <h3>Daily Motivation</h3>
+      <p>
+        Daily inspirational quotes, reminders, and a calm reading experience
+        designed to keep users focused and positive.
+      </p>
+      <a href="https://mrvibes1.github.io/dailymotivation/">View App</a>
     </div>
-  </section>
-
-  <footer>
-    &copy; 2025 FuturistiX. All rights reserved.
-  </footer>
-
-  <div style="margin-top: 20px; font-size: 0.95rem;">
-    📧 Contact us: <a href="mailto:futuristixapps@gmail.com">futuristixapps@gmail.com</a>
   </div>
+</section>
+
+<section id="resources">
+  <h2>Resources</h2>
+  <p class="section-desc">
+    Guides, tools, and digital resources to help creators and users get more value from technology.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Coming Soon</h3>
+      <p>
+        App growth playbooks, productivity guides, and learning tools curated
+        for modern builders and users.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 FuturistiX. All rights reserved.<br><br>
+  Contact: <a href="mailto:futuristixapps@gmail.com">futuristixapps@gmail.com</a>
+</footer>
 
 </body>
 </html>
