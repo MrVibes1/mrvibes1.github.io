@@ -97,6 +97,7 @@
       overflow: hidden;
     }
 
+    /* 🔴 FIX: overlay no longer blocks clicks */
     .card::before {
       content: "";
       position: absolute;
@@ -104,6 +105,7 @@
       background: radial-gradient(circle at top left, rgba(124,124,255,0.15), transparent 60%);
       opacity: 0;
       transition: opacity 0.3s ease;
+      pointer-events: none;
     }
 
     .card:hover {
@@ -132,7 +134,10 @@
       color: var(--muted);
     }
 
+    /* 🔴 Ensure links are above everything */
     .card a {
+      position: relative;
+      z-index: 2;
       display: inline-block;
       margin-top: 14px;
       padding: 10px 18px;
@@ -184,7 +189,9 @@
         Daily inspirational quotes, reminders, and a calm reading experience
         designed to keep users focused and positive.
       </p>
-      <a href="https://mrvibes1.github.io/dailymotivation/">View App</a>
+      <a href="https://mrvibes1.github.io/dailymotivation/" target="_blank" rel="noopener">
+        View App
+      </a>
     </div>
 
     <div class="card">
@@ -194,7 +201,8 @@
         Get more likes and views on TikTok. Likes helps creators boost engagement,
         increase visibility and improve their chances of going viral.
       </p>
-      <a href="https://play.google.com/store/apps/details?id=com.futuristixapps.likes">
+      <a href="https://play.google.com/store/apps/details?id=com.futuristixapps.likes"
+         target="_blank" rel="noopener">
         View on Play Store
       </a>
     </div>
@@ -215,7 +223,8 @@
         Learn how to keep users coming back using AI-driven strategies,
         habit loops, notifications, and engagement systems.
       </p>
-      <a href="https://futuristixapps.gumroad.com/l/AI_Retention_and_Engagement">
+      <a href="https://futuristixapps.gumroad.com/l/AI_Retention_and_Engagement"
+         target="_blank" rel="noopener">
         Get Playbook
       </a>
     </div>
@@ -227,7 +236,8 @@
         A practical guide to turning free users into paying customers using
         pricing psychology, funnels, and AI-powered monetization strategies.
       </p>
-      <a href="https://futuristixapps.gumroad.com/l/AI_Monetization">
+      <a href="https://futuristixapps.gumroad.com/l/AI_Monetization"
+         target="_blank" rel="noopener">
         Get Playbook
       </a>
     </div>
